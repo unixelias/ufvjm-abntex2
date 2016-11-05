@@ -19,10 +19,11 @@
 % ------------------------------------------------------------------------
 % Revisão para adequação ao MANUAL DE NORMALIZAÇÃO: MONOGRAFIAS, DISSERTAÇÕES
 % E TESES Aprovado pela Resolução Nº 06 - CONSEPE, de 09 de julho de 2015.
-% Esse trabalho considera as normas dispostas no  MANUAL DE NORMALIZAÇÃO: 
-% MONOGRAFIAS, DISSERTAÇÕES E TESES 2. ed., distribuído pelo Sistema de
+% Esse trabalho considera as normas dispostas no  Manual de Normatização: 
+% Monografias, Dissertações e Teses 2a. ed., distribuído pelo Sistema de
 % Bibliotecas – Sisbi da UFVJM.
 % Link: http://acervo.ufvjm.edu.br/jspui/handle/1/936
+% ------------------------------------------------------------------------
 % ***************************************************************************
 % Customizacões feitas por Elias da Cunha Alves
 % Estudante do Curso de Sistemas de Informação
@@ -31,11 +32,11 @@
 % Ex.: \curso{Bacharelado em Sistemas de Informação}
 % 
 % Para as variáveis \convidado* insira o nome do participante e a instituição
-% \convidadoa{%
-%	Prof. Dr. José Ferreira
-%	\par
-%	UFP - Universidade Federal Popular
-% }
+%% \convidadoa{%
+%%	Prof. Dr. José Ferreira
+%%	\par
+%%	UFP - Universidade Federal Popular
+%% }
 %
 % Esse arquivo contém estilos de capítulos que podem ser alterados por \chapterstyle
 % Esses estilos são baseados também na classe memoir
@@ -49,7 +50,9 @@
 
 \ProvidesPackage{abntex2novopacote}[2016/11/05 Criação desta customização do abnTeX2]
 
-
+% ---
+% MACROS
+% ---
 % Macro \curso adicionada
 \newcommand{\cursonome}{Curso: }
 
@@ -103,7 +106,9 @@
 	\renewcommand{\imprimirConvidadoC}{#2}
 }
 
-
+% ---
+% FONTE
+% ---
 % --
 % Fonte Times New Roman, conforme norma da UFVJM
 % --
@@ -113,7 +118,7 @@
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\selectfont}
 \renewcommand\chaptitlefont{\ABNTEXchapterfont\normalsize\bfseries\centering}
 % --- 
-% Espaçamentos entre linhas e parágrafos 
+% ESPAÇAMENTO ENTRE LINHAS E PARÁGRAFOS
 % --- 
 
 % Identaçao de 2,0 centímetros no início dos parágrafos
@@ -124,7 +129,7 @@
 
 
 % ---
-% Alterações na Capa, conforme norma da UFVJM
+% CAPA, conforme norma da UFVJM
 %
 \renewcommand{\imprimircapa}{%
 	\begin{capa}%
@@ -149,7 +154,7 @@
 }
 
 % ---
-% Alterações na Folha de Rosto, conforme norma da UFVJM
+% FOLHA DE ROSTO, conforme norma da UFVJM
 %
 
 \makeatletter
@@ -187,7 +192,7 @@
 \makeatother
 
 % ---
-% Folha de aprovação conforme modelo UFVJM
+% FOLHA DE APROVAÇÃO, conforme modelo UFVJM
 % ---
 
 \makeatletter
