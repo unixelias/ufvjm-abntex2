@@ -1,0 +1,248 @@
+%% abntex2-tcc-ufvjm.sty v-0.0.1 unixelias,
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade
+%% Federal dos Vales do Jequitinhonha e Mucuri - UFVJM
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Elias Alves - unixelias@gmail.com
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+% ------------------------------------------------------------------------
+% Revisão para adequação ao MANUAL DE NORMALIZAÇÃO: MONOGRAFIAS, DISSERTAÇÕES
+% E TESES Aprovado pela Resolução Nº 06 - CONSEPE, de 09 de julho de 2015.
+% Esse trabalho considera as normas dispostas no  MANUAL DE NORMALIZAÇÃO: 
+% MONOGRAFIAS, DISSERTAÇÕES E TESES 2. ed., distribuído pelo Sistema de
+% Bibliotecas – Sisbi da UFVJM.
+% Link: http://acervo.ufvjm.edu.br/jspui/handle/1/936
+% ***************************************************************************
+% Customizacões feitas por Elias da Cunha Alves
+% Estudante do Curso de Sistemas de Informação
+% Dicas:
+% Use as variáveis \subtítulo e \curso da mesma forma que as outras
+% Ex.: \curso{Bacharelado em Sistemas de Informação}
+% 
+% Para as variáveis \convidado* insira o nome do participante e a instituição
+% \convidadoa{%
+%	Prof. Dr. José Ferreira
+%	\par
+%	UFP - Universidade Federal Popular
+% }
+%
+% Esse arquivo contém estilos de capítulos que podem ser alterados por \chapterstyle
+% Esses estilos são baseados também na classe memoir
+% 
+% Caso não exista Subtítulo, o mesmo não será impresso
+% O mesmo para os convidados na Folha de Aprovação
+% ***************************************************************************
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UFVJM
+% ---
+
+\ProvidesPackage{abntex2novopacote}[2016/11/05 Criação desta customização do abnTeX2]
+
+
+% Macro \curso adicionada
+\newcommand{\cursonome}{Curso: }
+
+\providecommand{\imprimirRotuloCurso}{}
+\providecommand{\imprimirCurso}{}
+\newcommand{\curso}[2][\cursonome]{%
+	\renewcommand{\imprimirRotuloCurso}{#1}%
+	\renewcommand{\imprimirCurso}{#2}
+}
+
+% Macro \subtítulo adicionada
+
+\newcommand{\subtitulonome}{Subtítulo: }
+
+\providecommand{\imprimirRotuloSubtitulo}{}
+\providecommand{\imprimirSubtitulo}{}
+\newcommand{\subtitulo}[2][\subtitulonome]{%
+	\renewcommand{\imprimirRotuloSubtitulo}{#1}%
+	\renewcommand{\imprimirSubtitulo}{#2}
+}
+
+% Macro \convidadoARotulo adicionada
+\newcommand{\convidadoARotulo}{Convidado 1: }
+
+\providecommand{\imprimirRotuloConvidadoA}{}
+\providecommand{\imprimirConvidadoA}{}
+\newcommand{\convidadoa}[2][\convidadoARotulo]{%
+	\renewcommand{\imprimirRotuloConvidadoA}{#1}%
+	\renewcommand{\imprimirConvidadoA}{#2}
+}
+
+
+% Macro \convidadoBRotulo adicionada
+\newcommand{\convidadoBRotulo}{Convidado 1: }
+
+\providecommand{\imprimirRotuloConvidadoB}{}
+\providecommand{\imprimirConvidadoB}{}
+\newcommand{\convidadob}[2][\convidadoBRotulo]{%
+	\renewcommand{\imprimirRotuloConvidadoB}{#1}%
+	\renewcommand{\imprimirConvidadoB}{#2}
+}
+
+
+% Macro \convidadoARotulo adicionada
+\newcommand{\convidadoCRotulo}{Convidado 1: }
+
+\providecommand{\imprimirRotuloConvidadoC}{}
+\providecommand{\imprimirConvidadoC}{}
+\newcommand{\convidadoc}[2][\convidadoCRotulo]{%
+	\renewcommand{\imprimirRotuloConvidadoC}{#1}%
+	\renewcommand{\imprimirConvidadoC}{#2}
+}
+
+
+% --
+% Fonte Times New Roman, conforme norma da UFVJM
+% --
+% Padrão Times New Roman
+\renewcommand{\rmdefault}{ptm}
+% Fonte normal tam 12
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\selectfont}
+\renewcommand\chaptitlefont{\ABNTEXchapterfont\normalsize\bfseries\centering}
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% Identaçao de 2,0 centímetros no início dos parágrafos
+\setlength{\parindent}{2cm}
+
+% Sem espaços entre os parágrafos
+\setlength{\parskip}{0cm}  % tente também \onelineskip
+
+
+% ---
+% Alterações na Capa, conforme norma da UFVJM
+%
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirinstituicao}
+		\par
+		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirCurso}
+		\par
+		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
+		\par
+		\vfill
+		
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
+		\end{center}
+				
+		\vfill
+		\imprimirlocal
+		\par
+		\imprimirdata
+	\end{capa}
+}
+
+% ---
+% Alterações na Folha de Rosto, conforme norma da UFVJM
+%
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
+			
+		\vspace*{\fill}\vspace*{\fill}
+		
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
+		\end{center}		
+		\vspace*{\fill}
+		
+		\begin{adjustwidth}{7cm}{0cm}
+			\begin{SingleSpace}
+				\abntex@ifnotempty{\imprimirpreambulo}{%
+					\normalfont\imprimirpreambulo
+				}%
+				\par
+				\vspace*{1cm}
+				{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador\par}
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					{\ABNTEXchapterfont\normalfont\imprimircoorientadorRotulo~\imprimircoorientador}%
+				}%
+			\end{SingleSpace}
+		\end{adjustwidth}
+				
+		\vspace*{\fill}\vspace*{\fill}
+		{\imprimirlocal}
+		\par
+		{\imprimirdata}
+	\end{center}
+}
+\makeatother
+
+% ---
+% Folha de aprovação conforme modelo UFVJM
+% ---
+
+\makeatletter
+	\newcommand{\imprimirfolhadeaprovacao}{%
+		\begin{folhadeaprovacao}
+			\begin{center}
+				{\ABNTEXchapterfont\bfseries\imprimirautor}
+				\par\vspace*{\baselineskip}
+				\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
+				\par\vspace*{\baselineskip}
+				\vspace*{\fill}
+				\begin{adjustwidth}{7cm}{0cm}
+					\begin{SingleSpace}
+						\abntex@ifnotempty{\imprimirpreambulo}{%
+							\normalfont\imprimirpreambulo
+						}%
+						\par\vspace*{\baselineskip}
+						{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador}
+						\par\vspace*{\baselineskip}
+						Aprovado em: \underline{\hspace{.25in}}{/}\underline{\hspace{.25in}}{/}\underline{\hspace{.5in}}.
+					\end{SingleSpace}
+				\end{adjustwidth}
+				\vspace*{\fill}
+				\par\vspace*{\baselineskip}
+				\begin{SingleSpace}		
+					\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+					\par\vspace*{\baselineskip}
+					\abntex@ifnotempty{\imprimircoorientador}{%
+						\assinatura{\textbf{\imprimircoorientador} \\ Coorientador}
+						\par\vspace*{\baselineskip}
+					}
+					\abntex@ifnotempty{\imprimirConvidadoA}{%
+						\assinatura{\textbf{\imprimirConvidadoA}}
+						\par\vspace*{\baselineskip}
+					}
+					\abntex@ifnotempty{\imprimirConvidadoB}{%
+						\assinatura{\textbf{\imprimirConvidadoB}}
+						\par\vspace*{\baselineskip}
+					}
+					\abntex@ifnotempty{\imprimirConvidadoC}{%
+						\assinatura{\textbf{\imprimirConvidadoC}}
+						\par\vspace*{\baselineskip}
+					}
+				\end{SingleSpace}
+			\end{center}
+			\vspace*{\fill}
+			\begin{center}
+				\vspace*{0.5cm}
+				{\imprimirlocal}
+			\end{center}
+			
+		\end{folhadeaprovacao}}
+% ---
+\makeatother
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UFVJM
+% ---
