@@ -69,6 +69,8 @@
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{scripts/abntex2-tcc-ufvjm}
+\usepackage{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
 % ---
 	
 % ---
@@ -77,38 +79,18 @@
 \usepackage{lipsum}				% para geração de dummy text
 % ---
 
-% ---
-% Pacotes de citações
-% ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
 
 % ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
+% Formatação do capítulo (Tipografia)
 % ---
+\chapterstyle{ufvjm}
 
 % ---
 % CAPA E FOLHA DE ROSTO
 % ---
 \titulo{Modelo de Trabalho de Conclusão de Curso com \abnTeX}
-\subtitulo{Adaptado para as normas da UFVJM}
+% Subtítulo inicia-se em minusculo
+\subtitulo{adaptado para as normas da UFVJM}
 \autor{Elias da Cunha Alves}
 \local{Diamantina, MG}
 \data{2016}
@@ -222,74 +204,73 @@
 % Inserir a ficha bibliografica
 % ---
 % FICHA BIBLIOGRÁFICA
+% Você pode incluir um anexo em formato pdf usando o exemplo a seguir
+
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+% Caso precise escrever um exemplo
 % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
 % catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
 % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
 % com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
 % com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
 % o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
-% \begin{fichacatalografica}
-%     \includepdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
 
-\begin{fichacatalografica}
-	\sffamily
-	\vspace*{\fill}					% Posição vertical
-	\begin{center}					% Minipage Centralizado
-	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
-	\small
-	\imprimirautor
-	%Sobrenome, Nome do autor
-	
-	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-	\imprimirlocal, \imprimirdata-
-	
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-	
-	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-	\imprimirdata.}\\
-	
-	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		2. Palavra-chave3.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título 			
-	\end{minipage}}
-	\end{center}
-\end{fichacatalografica}
+%\begin{fichacatalografica}
+%	\sffamily
+%	\vspace*{\fill}					% Posição vertical
+%	\begin{center}					% Minipage Centralizado
+%	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+%	\small
+%	\imprimirautor
+%	%Sobrenome, Nome do autor
+%	
+%	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%	\imprimirlocal, \imprimirdata-
+%	
+%	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%	
+%	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+%	
+%	\hspace{0.5cm}
+%	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+%	\imprimirdata.}\\
+%	
+%	\hspace{0.5cm}
+%		1. Palavra-chave1.
+%		2. Palavra-chave2.
+%		2. Palavra-chave3.
+%		I. Orientador.
+%		II. Universidade xxx.
+%		III. Faculdade de xxx.
+%		IV. Título 			
+%	\end{minipage}}
+%	\end{center}
+%\end{fichacatalografica}
 % ---
 
 % ---
 % ERRATA
 % ---
 \begin{errata}
+
 Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
 
-\vspace{\onelineskip}
-
-FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
-reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
-rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
-cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
-Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+MORGADO, M. L . C. \textbf{Reimplante dentário}. 1990. 51 p. Trabalho de Conclusão de Curso (Graduação em Ciências Biológicas) - Faculdade de Ciências Biológicas e da Saúde, Universidade Federal dos Vales do Jequitinhonha e Mucuri, Diamantina, 1990.
 
 \begin{table}[htb]
-\center
-\footnotesize
-\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
-  \hline
-   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
-    \hline
-    1 & 10 & auto-conclavo & autoconclavo\\
-   \hline
-\end{tabular}
+	
+	\begin{tabular}{p{1cm}p{1cm}p{5.9cm}p{5.9cm}}
+		
+		Página & Linha  & Onde se lê  & Leia-se  \\
+		
+		32 & 03 & publicacao & publicação\\
+		55 & 15 & maior freqüência & maior amplitude\\
+		61 & 07 & foram encontradas & foram encontrados\\
+		
+	\end{tabular}
 \end{table}
 
 \end{errata}
@@ -379,19 +360,19 @@ contribuirão para a evolução do \abnTeX.
  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
  ponto e finalizadas também por ponto.
-
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+ 
+ % Palavra-chave inicia-se com maiúscula
+ \textbf{Palavras-chave}: Latex. Abntex. Editoração de texto.
 \end{resumo}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
    This is the english abstract.
-
-   \vspace{\onelineskip}
- 
-   \noindent 
-   \textbf{Keywords}: latex. abntex. text editoration.
+   \noindent
+   
+   % Keywords inicia-se com maiúscula.
+   \textbf{Keywords}: Latex. Abntex. Text editoration.
  \end{otherlanguage*}
 \end{resumo}
 
@@ -446,12 +427,14 @@ contribuirão para a evolução do \abnTeX.
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
+\pagestyle{simple}
+\aliaspagestyle{chapter}{simple}
 
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
-\chapter*[Introdução]{Introdução}
-\addcontentsline{toc}{chapter}{Introdução}
+\chapter{Introdução}
+
 % ----------------------------------------------------------
 
 Este documento e seu código-fonte são exemplos de referência de uso da classe
@@ -495,7 +478,10 @@ Lauro César Araujo
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
-\part{Preparação da pesquisa}
+% Esse modelo suporta partes, mas somente deve ser usado caso sejam 
+% artigos diferentes
+% ---------------------------------------
+%\part{Preparação da pesquisa}
 % ----------------------------------------------------------
 
 % ---
@@ -504,16 +490,11 @@ Lauro César Araujo
 \include{scripts/abntex2-modelo-include-comandos}
 % ---
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Referenciais teóricos}
-% ----------------------------------------------------------
-
 % ---
 % Capitulo de revisão de literatura
 % ---
 \chapter{Lorem ipsum dolor sit amet}
+
 % ---
 
 % ---
@@ -523,12 +504,11 @@ Lauro César Araujo
 \lipsum[1]
 
 \lipsum[2-3]
-
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Resultados}
-% ----------------------------------------------------------
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
 
 % ---
 % primeiro capitulo de Resultados
@@ -556,12 +536,6 @@ elementum}
 
 \lipsum[24]
 
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
-\phantompart
 
 % ---
 % Conclusão
@@ -599,8 +573,6 @@ elementum}
 % ---
 \begin{apendicesenv}
 
-% Imprime uma página indicando o início dos apêndices
-\partapendices
 
 % ----------------------------------------------------------
 \chapter{Quisque libero justo}
@@ -628,7 +600,6 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 \begin{anexosenv}
 
 % Imprime uma página indicando o início dos anexos
-\partanexos
 
 % ---
 \chapter{Morbi ultrices rutrum lorem.}
