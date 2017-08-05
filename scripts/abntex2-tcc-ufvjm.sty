@@ -48,7 +48,15 @@
 % INICIO DAS CUSTOMIZACOES PARA A UFVJM
 % ---
 
-\ProvidesPackage{abntex2novopacote}[2016/11/05 Criação desta customização do abnTeX2]
+\ProvidesPackage{scripts/abntex2-tcc-ufvjm}[2016/11/05 Criação desta customização do abnTeX2]
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Texto padrão antes do número das páginas
 
 % ---
 % MACROS
@@ -117,15 +125,21 @@
 % Fonte normal tam 12
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\selectfont}
 \renewcommand\chaptitlefont{\ABNTEXchapterfont\normalsize\bfseries\centering}
+
 % --- 
 % ESPAÇAMENTO ENTRE LINHAS E PARÁGRAFOS
 % --- 
+
+% Ajusta esaçamento e fontes
+\setlength{\beforechapskip}{12pt -\baselineskip}
+\setlength{\afterchapskip}{18pt -\baselineskip}
 
 % Identaçao de 2,0 centímetros no início dos parágrafos
 \setlength{\parindent}{2cm}
 
 % Sem espaços entre os parágrafos
 \setlength{\parskip}{0cm}  % tente também \onelineskip
+\setlength{\footmarkwidth}{8pt} % largura do footnotemark
 
 
 % ---
@@ -136,7 +150,7 @@
 		\center
 		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirinstituicao}
 		\par
-		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirCurso}
+		\ABNTEXchapterfont\bfseries\normalsize{\imprimirCurso}
 		\par
 		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
 		\par
@@ -247,6 +261,87 @@
 		\end{folhadeaprovacao}}
 % ---
 \makeatother
+
+% ESTILO DE CAPÍTULO
+% ---
+% Configuracao dos titulos dos capitulos
+% Novo estido do memoir 
+% Norma ABNT NBR 14724-2011 - 5.2.2-5.2.4; ABNT NBR 6024-2003 - 3.1-3.8
+
+\makechapterstyle{ufvjm}{%
+	\renewcommand{\chapterheadstart}{} 
+	
+	\ifx \chapternamenumlength \undefined
+	\newlength{\chapternamenumlength}
+	\fi
+	
+	% tamanhos de fontes de chapter e part	
+	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+		\setlength{\beforechapskip}{\baselineskip}
+		\setlength{\afterchapskip}{18pt} 
+		\renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\normalsize}
+	}{%else
+		\setlength{\beforechapskip}{0pt}
+		\setlength{\afterchapskip}{18pt} 
+		\renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\normalsize}
+	}
+	
+	\renewcommand{\chapnumfont}{\chaptitlefont}
+	\renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	\renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	\renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	
+	% tamanhos de fontes de section, subsection, subsubsection e subsubsubsection
+	\setsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsectionupperifneeded}
+	\setsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsectionupperifneeded}
+	\setsubsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsubsectionupperifneeded}
+	\setsubsubsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsubsubsectionupperifneeded}
+	
+	% impressao do numero do capitulo
+	\renewcommand{\chapternamenum}{}
+	
+	% impressao do nome do capitulo
+	\renewcommand{\printchaptername}{%
+		\chaptitlefont
+		\ifthenelse{\boolean{abntex@apendiceousecao}}{\appendixname}{}%
+	}
+	
+	% impressao do titulo do capitulo
+	\def\printchaptertitle##1{%
+		\chaptitlefont%
+		\ifthenelse{\boolean{abntex@innonumchapter}}{\centering\ABNTEXchapterupperifneeded{##1}}{%
+			\ifthenelse{\boolean{abntex@apendiceousecao}}{%
+				\centering%
+				\settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+				\ABNTEXchapterupperifneeded{##1}%
+			}{%
+				\settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+				\parbox[t]{\columnwidth-\chapternamenumlength}{\ABNTEXchapterupperifneeded{##1}}}%
+		}    
+	}
+	
+	% impressao do numero do capitulo     	
+	\renewcommand{\printchapternum}{%
+		\tocprintchapter
+		\setboolean{abntex@innonumchapter}{false}
+		\chapnumfont%
+		\space\thechapter\space%
+		\ifthenelse{\boolean{abntex@apendiceousecao}}{%
+			\tocinnonumchapter
+			\ABNTEXcaptiondelim%
+		}{} % else
+	}
+	\renewcommand{\afterchapternum}{}
+	
+	% impressao do capitulo nao numerado
+	\renewcommand\printchapternonum{%
+		\tocprintchapternonum
+		\setboolean{abntex@innonumchapter}{true}%
+	}
+}
+
+% ---
+
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UFVJM
