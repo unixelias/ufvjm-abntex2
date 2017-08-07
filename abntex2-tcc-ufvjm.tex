@@ -69,12 +69,20 @@
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{scripts/abntex2-tcc-ufvjm}
-	
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
 \usepackage{lipsum}				% para geração de dummy text
 % ---
+\usepackage{caption}			% para correções na formatação de notas de tabelas
+\renewcommand{\theequation}{\arabic{equation}}
+% ---
+% para tratar urls longas
+\usepackage{url}				% para tratar URLs longas
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
 % ---
 % Pacotes de citações
 % ---
@@ -83,9 +91,6 @@
 % O Subtítulo deve ser iniciado com letra minúscula e não é necessário incluir
 % dois pontos no após o título, pois o pacote faz isso de forma automática
 \usepackage[abnt-emphasize=bf,abnt-title-command=yes,abnt-show-options=list+,alf]{abntex2cite}	% Citações padrão ABNT
-
-% ---
-
 
 % ---
 % Formatação do capítulo (Tipografia)
@@ -267,13 +272,13 @@ Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
 MORGADO, M. L . C. \textbf{Reimplante dentário}. 1990. 51 p. Trabalho de Conclusão de Curso (Graduação em Ciências Biológicas) - Faculdade de Ciências Biológicas e da Saúde, Universidade Federal dos Vales do Jequitinhonha e Mucuri, Diamantina, 1990.
 
 \begin{table}[htb]
-	
-	\begin{tabular}{p{1cm}p{1cm}p{5.9cm}p{5.9cm}}
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{6cm}p{6cm}}
 		
 		Página & Linha  & Onde se lê  & Leia-se  \\
 		
 		32 & 03 & publicacao & publicação\\
-		55 & 15 & maior freqüência & maior amplitude\\
+		55 & 15 & maior frequência & maior amplitude\\
 		61 & 07 & foram encontradas & foram encontrados\\
 		
 	\end{tabular}

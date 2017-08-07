@@ -71,8 +71,8 @@ Use o ambiente assim:
 
 \begin{verbatim}
 \begin{citacao}
-As citações diretas, no texto, com mais de três linhas [...] deve-se observar
-apenas o recuo \cite[5.3]{NBR10520:2002}.
+As citações diretas, no texto, com mais de três linhas [...] deve-se
+observar apenas o recuo \cite[5.3]{NBR10520:2002}.
 \end{citacao}
 \end{verbatim}
 
@@ -124,20 +124,20 @@ dividi-los no corpo do texto.}.
 	\ABNTEXfontereduzida
 	\caption[Níveis de investigação]{Níveis de investigação.}
 	\label{tab-nivinv}
-	\begin{tabular}{p{2.6cm}|p{6.0cm}|p{2.25cm}|p{3.40cm}}
+	\begin{tabular}{p{2.6cm} p{6.0cm} p{2.25cm} p{3.40cm}}
 		\toprule
 		\textbf{Nível de Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
-		\hline
+		\midrule
 		Meta-nível & Filosofia\index{filosofia} da Ciência  & Epistemologia &
 		Paradigma  \\
-		\hline
+		
 		Nível do objeto & Paradigmas do metanível e evidências do nível inferior &
 		Ciência  & Teorias e modelos \\
-		\hline
+		
 		Nível inferior & Modelos e métodos do nível do objeto e problemas do nível inferior & Prática & Solução de problemas  \\
 		\bottomrule
 	\end{tabular}
-	\legend{Fonte: \citeonline{van86}}
+	\ABNTEXfontereduzida\legend{Fonte: \citeonline{van86}}
 \end{table}
 
 Já a \autoref{tabela-ibge} apresenta uma tabela criada conforme o padrão do
@@ -150,19 +150,19 @@ acadêmicos.
   \caption{Um Exemplo de tabela alinhada que pode ser longa
   ou curta, conforme padrão IBGE.}%
   \label{tabela-ibge}
-}{%
-  \begin{tabular}{ccc}
-  \toprule
-   Nome & Nascimento & Documento \\
-  \midrule
-   Maria da Silva & 11/11/1111 & 111.111.111-11 \\
-   
-   João Souza & 11/11/2111 & 211.111.111-11 \\
-   
-   Laura Vicuña & 05/04/1891 & 3111.111.111-11 \\
-  \bottomrule
-\end{tabular}%
-}{%
+	}{%
+	  \begin{tabular}{ccc}
+	  \toprule
+	   Nome & Nascimento & Documento \\
+	  \midrule
+	   Maria da Silva & 11/11/1111 & 111.111.111-11 \\
+	   
+	   João Souza & 11/11/2111 & 211.111.111-11 \\
+	   
+	   Laura Vicuña & 05/04/1891 & 3111.111.111-11 \\
+	  \bottomrule
+	\end{tabular}%
+	}{%
 	\fonte{Produzido pelos autores.}%
 	\nota{Esta é uma nota, que diz que os dados são baseados na regressão linear.}%
 	\nota[Anotações]{Uma anotação adicional, que pode ser seguida de várias outras.}%
@@ -481,15 +481,15 @@ seções, subseções e subsubseções.
 O código usado para produzir o texto desta seção é:
 
 \begin{verbatim}
-Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos um
-exemplo de remissão interna, que também pode ser feita quando indicamos o
-\autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}. O número
-do capítulo indicado é \ref{cap_exemplos}, que se inicia à
-\autopageref{cap_exemplos}\footnote{O número da página de uma remissão pode ser
-obtida também assim:
+Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos
+um exemplo de remissão interna, que também pode ser feita quando indicamos
+o \autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}.
+O número do capítulo indicado é \ref{cap_exemplos}, que se inicia à 
+\autopageref{cap_exemplos}\footnote{O número da página de uma remissão
+pode ser obtida também assim:
 \pageref{cap_exemplos}.}.
-Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas entre
-seções, subseções e subsubseções.
+Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas
+entre seções, subseções e subsubseções.
 \end{verbatim}
 
 % ---

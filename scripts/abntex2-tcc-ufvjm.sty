@@ -44,13 +44,18 @@
 % Caso não exista Subtítulo, o mesmo não será impresso
 % O mesmo para os convidados na Folha de Aprovação
 % ***************************************************************************
+
 % ---
 % INICIO DAS CUSTOMIZACOES PARA A UFVJM
 % ---
 
 \ProvidesPackage{scripts/abntex2-tcc-ufvjm}[2016/11/05 Criação desta customização do abnTeX2]
 
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo da UFVJM
 % --- 
+
+% ---
 % CONFIGURAÇÕES DE PACOTES
 % --- 
 
@@ -339,9 +344,52 @@
 		\setboolean{abntex@innonumchapter}{true}%
 	}
 }
-
+\chapterstyle{ufvjm}
 % ---
 
+ 
+% Altera os comandos \configurecaptions e \configureseparator para trabalhar com 
+% o pacote caption e amigos. Aqui ele está configurado para as normas da UFVJM,
+% sem espaços entre as notas
+\AtEndPackage{caption}{
+	\AtBeginDocument{%
+		\DeclareCaptionLabelSeparator{barr}{\ABNTEXcaptiondelim}
+		\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
+		\captionsetup{format=hang,
+			labelseparator=barr,
+			%labelfont=ABNTEXfontereduzida,
+			%font=ABNTEXfontereduzida
+		}
+		\renewcommand{\configurecaptions}{%
+			\captionsetup{justification=justified,%
+				singlelinecheck=false,
+				position=above,
+				skip={0pt},
+				width={0pt}}}
+		\renewcommand{\configureseparator}{\captionsetup{labelsep=colon}}
+	}
+}
+
+% Define o comando \fonte que respeita as configurações de caption do memoir ou do caption
+% customizado para mostrar ":" e não "-"
+\makeatletter
+\renewcommand{\fonte}[2][\fontename]{%
+	\M@gettitle{#2}%
+	\memlegendinfo{#2}%
+	\par
+	\begingroup
+	\@parboxrestore
+	\if@minipage
+	\@setminipage
+	\fi
+	\ABNTEXfontereduzida
+	\configureseparator
+	\captiondelim{labelseparator=colon}
+	% Identa os itens das notas e fontes
+	%\captionsetup{format=plain,indention=0pt}
+	\@makecaption{\ABNTEXfontereduzida #1}{\ignorespaces\ABNTEXfontereduzida #2}\par
+	\endgroup}
+\makeatother
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UFVJM
