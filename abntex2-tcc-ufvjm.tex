@@ -84,13 +84,15 @@
 \makeatother
 
 % ---
-% Pacotes de citações
+% Pacotes de citações para o padrão ABNT
 % ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-% Configura o título em negrito, conforme norma da UFVJM
-% O Subtítulo deve ser iniciado com letra minúscula e não é necessário incluir
-% dois pontos no após o título, pois o pacote faz isso de forma automática
-\usepackage[abnt-emphasize=bf,abnt-title-command=yes,abnt-show-options=list+,alf]{abntex2cite}	% Citações padrão ABNT
+% Esse pacote usa o biblatex-abnt
+\usepackage[style=abnt, % Estilo padrão ABNT
+			language=brazil, % Lingua pt_BR
+			noslsn, % Oculta as abreviações [s.l], [s.n] e [s.l.: s.n.]
+			repeatfields % Imprime os campos repetidos na bibliografia, em vez de ___________.
+]{biblatex}
+\addbibresource{scripts/abntex2-modelo-references.bib}        % Importa os arquivos .bib
 
 % ---
 % Formatação do capítulo (Tipografia)
@@ -267,7 +269,7 @@
 % ---
 \begin{errata}
 
-Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+Elemento opcional da \textcite[4.2.1.2]{NBR14724:2011}. Exemplo:
 
 MORGADO, M. L . C. \textbf{Reimplante dentário}. 1990. 51 p. Trabalho de Conclusão de Curso (Graduação em Ciências Biológicas) - Faculdade de Ciências Biológicas e da Saúde, Universidade Federal dos Vales do Jequitinhonha e Mucuri, Diamantina, 1990.
 
@@ -363,7 +365,7 @@ contribuirão para a evolução do \abnTeX.
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
- Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
+ Segundo a \textcite[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
  destes itens dependem do tipo de resumo (informativo ou indicativo) e do
  tratamento que cada item recebe no documento original. O resumo deve ser
@@ -455,7 +457,7 @@ gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documenta
 A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
 modelo específico de nenhuma universidade ou instituição, mas que implementa tão
 somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
+observadas pelo \abnTeX\ é apresentada em \textcite{abntex2classe}.
 
 Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
 \url{http://www.abntex.net.br/}. Também fique livre para conhecer,
@@ -470,7 +472,7 @@ Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
 \abnTeX, distribua-se arquivos com as respectivas customizações.
 Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
 incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
+\textcite{abntex2-wiki-como-customizar} par mais informações.
 
 Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
 \cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
@@ -566,8 +568,10 @@ elementum}
 % ##>>====>> IMPORTANTE <<=====<<##
 % O Subtítulo deve ser iniciado com letra minúscula, conforme
 % norma da UFVJM
-\bibliography{scripts/abntex2-modelo-references}
 
+% Esse comando imprime a bibliografia usando o biblatex
+\nocite{*}
+\printbibliography
 % ----------------------------------------------------------
 % Glossário
 % ----------------------------------------------------------
