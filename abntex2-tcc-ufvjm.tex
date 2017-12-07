@@ -12,7 +12,7 @@
 %% This work has the LPPL maintenance status `maintained'.
 %% 
 %% The Current Maintainer of this work is Elias Alves - unixelias@gmail.com
-%% Universidade Federal dos  Vales do Jequitinhonha e Mucuri
+%% Universidade Federal dos Vales do Jequitinhonha e Mucuri
 %%
 %% This work consists of the files abtex2-tcc-ufvjm.tex and
 %% abntex2-tcc-ufvjm.sty
@@ -32,7 +32,7 @@
 % ------------------------------------------------------------------------
 % Revisão para adequação ao MANUAL DE NORMALIZAÇÃO: MONOGRAFIAS, DISSERTAÇÕES
 % E TESES Aprovado pela Resolução Nº 06 - CONSEPE, de 09 de julho de 2015.
-% Esse trabalho considera as normas dispostas no  Manual de Normatização: 
+% Esse trabalho considera as normas dispostas no Manual de Normatização: 
 % Monografias, Dissertações e Teses 2a. ed., distribuído pelo Sistema de
 % Bibliotecas – Sisbi da UFVJM.
 % Link: http://acervo.ufvjm.edu.br/jspui/handle/1/936
@@ -41,26 +41,26 @@
 % ------------------------------------------------------------------------
 
 \documentclass[
-	% -- opções da classe memoir --
-	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	twoside,			% para impressão em recto e verso. Oposto a oneside
-	a4paper,			% tamanho do papel. 
-	% -- opções da classe abntex2 --
-	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
-	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
-	% -- opções do pacote babel --
-	english,			% idioma adicional para hifenização
-	brazil				% o último idioma é o principal do documento
-	]{abntex2}
+% -- opções da classe memoir --
+12pt,				% tamanho da fonte
+openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+twoside,			% para impressão em recto e verso. Oposto a oneside
+a4paper,			% tamanho do papel.
+% -- opções da classe abntex2 --
+chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil				% o último idioma é o principal do documento
+]{abntex2}
 
 % ---
-% PACOTES BÁSICOS 
+% PACOTES BÁSICOS
 % ---
 
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage{lmodern}			% Usa a fonte Latin Modern
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
@@ -69,51 +69,75 @@
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{scripts/abntex2-tcc-ufvjm}
-% ---
-	
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{lscape}
+\usepackage{wallpaper}
+\usepackage{pdfpages}			% Inclui anexos em pdf
+
+
 % ---
 % Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
 % ---
 \usepackage{lipsum}				% para geração de dummy text
 % ---
+\usepackage{caption}			% para correções na formatação de notas de tabelas
+\renewcommand{\theequation}{\arabic{equation}}
+% ---
+% para tratar urls longas
+\usepackage{url}				% para tratar URLs longas
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+% ---
+% Pacotes glossaries
+% ---
+%\usepackage[subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+% para usar o xindy ao invés do makeindex:
+\usepackage[xindy={language=portuguese},
+	subentrycounter,
+	seeautonumberlist,
+	nonumberlist=true
+	]{glossaries}
+% ---
 
 % ---
-% Pacotes de citações
+% Pacotes para inserir licença do documento
 % ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage[
+	type={CC},
+	modifier={by-sa},
+	version={4.0},
+	]{doclicense}
+% ---
+% BIBLIOGRAFIA
+% Pacotes de citações para o padrão ABNT
+% ---
+% Esse pacote usa o biblatex-abnt
+\usepackage[style=abnt, % Estilo padrão ABNT
+	language=brazil, % Lingua pt_BR
+	noslsn, % Oculta as abreviações [s.l], [s.n] e [s.l.: s.n.]
+	repeatfields % Imprime os campos repetidos na bibliografia, em vez de ___________.
+	]{biblatex}
+\addbibresource{scripts/abntex2-modelo-references.bib}        % Importa os arquivos .bib
 
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
-
 % ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
+% Formatação do capítulo (Tipografia)
 % ---
+\chapterstyle{ufvjm}
 
 % ---
 % CAPA E FOLHA DE ROSTO
 % ---
 \titulo{Modelo de Trabalho de Conclusão de Curso com \abnTeX}
-\subtitulo{Adaptado para as normas da UFVJM}
+% Subtítulo inicia-se em minusculo
+\subtitulo{adaptado para as normas da UFVJM}
 \autor{Elias da Cunha Alves}
 \local{Diamantina, MG}
-\data{2016}
-\orientador{Prof. Dr. Alan Turing}
-\coorientador{Profa Dr. Joan Clarke}
+\data{2017}
+\orientador{Prof. Dr. José Professorildo Silva}
+\coorientador{Profa Dr. Maria Orientilda de Sá}
 \instituicao{Universidade Federal dos Vales do Jequitinhonha e Mucurí}
 \curso{Bacharelado em Sistemas de Informação}
 \tipotrabalho{Trabalho de Conclusão de Curso}
@@ -135,21 +159,20 @@
 	
 }
 
-%\convidadob{%
-%	Prof. Dr. José Ferreira
-%	\par %	UFP - Universidade Federal Popular
-%
-%}
+\convidadob{%
+	Prof. Dr. José Ferreira
+	\par %	
+	UFP - Universidade Federal Popular
+
+}
 
 \convidadoc{%
-	Prof. Dr. Chico Rei
+	Prof. Dr. Chico Bento
 	\par
-	UFOP - Universidade Federal de Ouro Preto
+	UFC - Universidade Federal Caipira
 }
 
 % ---
-
-
 
 
 % ---
@@ -187,7 +210,8 @@
 % ---
 \makeindex
 % ---
-
+\makeglossaries
+\include{pos/glossario}
 % ----
 % Início do documento
 % ----
@@ -222,16 +246,19 @@
 % Inserir a ficha bibliografica
 % ---
 % FICHA BIBLIOGRÁFICA
+% Você pode incluir um anexo em formato pdf usando o exemplo a seguir
+
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+% Caso precise escrever um exemplo
 % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
 % catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
 % Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
 % com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
 % com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
 % o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
-% \begin{fichacatalografica}
-%     \includepdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
 
 \begin{fichacatalografica}
 	\sffamily
@@ -264,32 +291,28 @@
 	\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
-% ---
+ ---
 
 % ---
 % ERRATA
 % ---
 \begin{errata}
-Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
 
-\vspace{\onelineskip}
+Elemento opcional da \textcite{NBR14724:2011}. Exemplo:
 
-FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
-reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
-rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
-cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
-Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+MORGADO, M. L . C. \textbf{Reimplante dentário}. 1990. 51 p. Trabalho de Conclusão de Curso (Graduação em Ciências Biológicas) - Faculdade de Ciências Biológicas e da Saúde, Universidade Federal dos Vales do Jequitinhonha e Mucuri, Diamantina, 1990.
 
 \begin{table}[htb]
-\center
-\footnotesize
-\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
-  \hline
-   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
-    \hline
-    1 & 10 & auto-conclavo & autoconclavo\\
-   \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{p{1cm}p{1cm}p{6cm}p{6cm}}
+		
+		Página & Linha  & Onde se lê  & Leia-se  \\
+		
+		32 & 03 & publicacao & publicação\\
+		55 & 15 & maior frequência & maior amplitude\\
+		61 & 07 & foram encontradas & foram encontrados\\
+		
+	\end{tabular}
 \end{table}
 
 \end{errata}
@@ -371,7 +394,7 @@ contribuirão para a evolução do \abnTeX.
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
- Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
+ Segundo a \textcite{NBR6028:2003}, o resumo deve ressaltar o
  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
  destes itens dependem do tipo de resumo (informativo ou indicativo) e do
  tratamento que cada item recebe no documento original. O resumo deve ser
@@ -379,19 +402,19 @@ contribuirão para a evolução do \abnTeX.
  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
  ponto e finalizadas também por ponto.
-
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+ 
+ % Palavra-chave inicia-se com maiúscula
+ \textbf{Palavras-chave}: Latex. Abntex. Editoração de texto.
 \end{resumo}
 
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
    This is the english abstract.
-
-   \vspace{\onelineskip}
- 
-   \noindent 
-   \textbf{Keywords}: latex. abntex. text editoration.
+   \noindent
+   
+   % Keywords inicia-se com maiúscula.
+   \textbf{Keywords}: Latex. Abntex. Text editoration.
  \end{otherlanguage*}
 \end{resumo}
 
@@ -405,12 +428,30 @@ contribuirão para a evolução do \abnTeX.
 % ---
 
 % ---
+% inserir lista de quadros
+% ---
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de códigos
+% ---
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\lstlistoflistings*
+\cleardoublepage
+
+% ---
+
+% ---
 % inserir lista de tabelas
 % ---
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
 % ---
+
 
 % ---
 % inserir lista de abreviaturas e siglas
@@ -446,12 +487,12 @@ contribuirão para a evolução do \abnTeX.
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
-
+\pagestyle{simple}
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
-\chapter*[Introdução]{Introdução}
-\addcontentsline{toc}{chapter}{Introdução}
+\chapter{Introdução}
+
 % ----------------------------------------------------------
 
 Este documento e seu código-fonte são exemplos de referência de uso da classe
@@ -463,7 +504,7 @@ gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documenta
 A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
 modelo específico de nenhuma universidade ou instituição, mas que implementa tão
 somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
+observadas pelo \abnTeX\ é apresentada em \textcite{abntex2classe}.
 
 Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
 \url{http://www.abntex.net.br/}. Também fique livre para conhecer,
@@ -478,7 +519,7 @@ Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
 \abnTeX, distribua-se arquivos com as respectivas customizações.
 Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
 incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
+\textcite{abntex2-wiki-como-customizar} par mais informações.
 
 Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
 \cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
@@ -495,7 +536,10 @@ Lauro César Araujo
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
-\part{Preparação da pesquisa}
+% Esse modelo suporta partes, mas somente deve ser usado caso sejam 
+% artigos diferentes
+% ---------------------------------------
+%\part{Preparação da pesquisa}
 % ----------------------------------------------------------
 
 % ---
@@ -504,16 +548,11 @@ Lauro César Araujo
 \include{scripts/abntex2-modelo-include-comandos}
 % ---
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Referenciais teóricos}
-% ----------------------------------------------------------
-
 % ---
 % Capitulo de revisão de literatura
 % ---
 \chapter{Lorem ipsum dolor sit amet}
+
 % ---
 
 % ---
@@ -523,12 +562,11 @@ Lauro César Araujo
 \lipsum[1]
 
 \lipsum[2-3]
-
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Resultados}
-% ----------------------------------------------------------
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
+\lipsum[21-22]
 
 % ---
 % primeiro capitulo de Resultados
@@ -556,12 +594,6 @@ elementum}
 
 \lipsum[24]
 
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
-\phantompart
 
 % ---
 % Conclusão
@@ -580,15 +612,54 @@ elementum}
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{scripts/abntex2-modelo-references}
+% ##             >>====>> IMPORTANTE <<=====<<             ##
+% O Subtítulo deve ser iniciado com letra minúscula, conforme
+% norma da UFVJM
 
-% ----------------------------------------------------------
+% Esse comando imprime a bibliografia usando o biber
+%\nocite{*}
+\printbibliography
+
+----------------------------------------------------------
 % Glossário
 % ----------------------------------------------------------
-%
-% Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
-%\glossary
+
+% ---
+% Define nome e preâmbulo do glossário
+% ---
+
+\renewcommand{\glossaryname}{GLOSSÁRIO}
+\renewcommand{\glossarypreamble}{Este glossário contém algumas definições de termos técnicos importantes para melhor entendimento do trabalho}
+
+% ---
+% Traduções para o ambiente glossaries
+% ---
+\providetranslation{Glossary}{Glossário}
+\providetranslation{Acronyms}{Siglas}
+\providetranslation{Notation (glossaries)}{Notação}
+\providetranslation{Description (glossaries)}{Descrição}
+\providetranslation{Symbol (glossaries)}{Símbolo}
+\providetranslation{Page List (glossaries)}{Lista de Páginas}
+\providetranslation{Symbols (glossaries)}{Símbolos}
+\providetranslation{Numbers (glossaries)}{Números}
+% ---
+
+% ---
+% Estilo de glossário
+% ---
+%\setglossarystyle{index}
+\setglossarystyle{altlisthypergroup}
+%\setglossarystyle{tree}
+
+%\glsaddall
+% ---
+% Imprime o glossário
+% ---
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossaries
+% ---
 
 % ----------------------------------------------------------
 % Apêndices
@@ -598,22 +669,16 @@ elementum}
 % Inicia os apêndices
 % ---
 \begin{apendicesenv}
+	\cleardoublepage
+	\phantomsection
+	% Inclui arquivo auxiliar de apêndices
+	\chapter{Apendices Ipsum}
+	\lipsum[1]
+	
+	\lipsum[2-3]
 
-% Imprime uma página indicando o início dos apêndices
-\partapendices
-
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
-
-\lipsum[50]
-
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
-
+	
+	
 \end{apendicesenv}
 % ---
 
@@ -626,35 +691,36 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % Inicia os anexos
 % ---
 \begin{anexosenv}
+	
+	% Imprime uma página indicando o início dos anexos
+	% Inclui arquivo auxiliar de anexos
+	\cleardoublepage
+	\phantomsection
+	\chapter{Anexos Lipsum}
+	\lipsum[1]
+	
+	\lipsum[2-3]
+	\lipsum[21-22]
 
-% Imprime uma página indicando o início dos anexos
-\partanexos
-
-% ---
-\chapter{Morbi ultrices rutrum lorem.}
-% ---
-\lipsum[30]
-
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
-
-\lipsum[31]
-
-% ---
-\chapter{Fusce facilisis lacinia dui}
-% ---
-
-\lipsum[32]
-
+	
+	
 \end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
 %---------------------------------------------------------------------
-\phantompart
 \printindex
-%---------------------------------------------------------------------
 
+%---------------------------------------------------------------------
+% LICENÇA DO TRABALHO
+%---------------------------------------------------------------------
+%---------------------------------------------------------------------
+% Imprime a licença do trabalho pós impressão
+% A licença desse código fonte está declarada no cabeçalho
+\cleardoublepage
+\vspace*{\fill}
+\begin{center}
+	\doclicenseThis
+\end{center}
+\clearpage
 \end{document}

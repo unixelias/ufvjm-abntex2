@@ -1,0 +1,135 @@
+% ---
+% entradas do glossario
+% Não é preciso colocar ponto final nas definições
+% ---
+\newglossaryentry{sgc}{
+	name={SGC},
+	plural={SGCs},
+	description={Pode-se descrever um \gls{sgc}, ou do inglês \textit{Content Management System (\gls{cms})}, como um sistema capaz de integrar diversas soluções que facilitem o gerenciamento de sites. Eles oferecem uma série de funcionalidades pré-programadas que auxiliam desde os administradores dos sites aos publicadores de conteúdo \cite{amaral_websites_2011, coelho_o_2011, kappel_web_2006}. Tais ferramentas auxiliam em diferentes tipos de tarefas como criação, publicação, manutenção e gerenciamento da informação tornando a interação com o sistema mais fácil e intuitiva, sendo assim acessível a qualquer colaborador que detenha a informação \cite{chagas_um_2008}} }
+
+\newglossaryentry{cms}{
+	name={CMS},
+	plural={CMSs},
+	see=[veja também]{scg},
+	parent=sgc,
+	description={do inglês \textit{Content Management System (CMS)} }}
+
+\newglossaryentry{idg}{
+	name={IDG},
+	plural={IDG},
+	description={a Identidade Padrão de Comunicação Digital do Poder Executivo Federal é uma iniciativa da Secom que oferece conjunto de diretrizes, orientações, padrões e modelos recomendados para adoção pelos sites governamentais com a finalidade de atender às necessidades de comunicação digital do \textcite{governo_federal_decreto_2014-1}}}
+
+\newglossaryentry{brainstorming}{
+	name={\textit{brainstorming}},
+	plural={\textit{brainstormings}},
+	description={é uma técnica de discussão para buscar soluções em grupos que estimula a criatividade incentivando aos participantes de indicarem novas ideias em conjunto com o grupo. As ideias podem ser discutidas e aperfeiçoadas durante essa atividade e a quantidade também é posiva, sendo rejeitadas as críticas\cite{pressman_engenharia_2006}}}
+
+\newglossaryentry{stakeholder}{
+	name={\textit{stakeholder}},
+	plural={\textit{stakeholders}},
+	description={são todas as pessoas que de alguma maneira são ou estão interessadas no projeto, podendo compartilhar ou não interesses entre si \cite{pressman_engenharia_2006}}}
+
+\newglossaryentry{portal}{
+	name={portal},
+	plural={portais},
+	description={é um tipo de sítio que agrega conteúdo de forma organizada, agregando o conteúdo de forma a facilitar e orientar a navegação de seu público\cite{departamento_de_governo_eletronico_-_dge_guia_2012}} }
+
+\newglossaryentry{sitio}{
+	name={sítio},
+	plural={sítios},
+	description={é um conjunto de páginas com algum tipo de conteúdo interligado com alguma lógica e ligadas ao tema principal da entidade que o criou\cite{kappel_web_2006}} }
+
+\newglossaryentry{sitio-inst}{
+	name={sítio institucional},
+	plural={sítio institucionais},
+	see=[veja também]{sitio},
+	parent=sitio,
+	description={sítio institucional é um tipo de sítio que contém informações relacionadas a alguma instituição governamental, ou setor} }
+
+\newglossaryentry{sitio-tem}{
+	name={sítio institucional},
+	plural={sítio institucionais},
+	see=[veja também]{sitio},
+	parent=sitio,
+	description={sítio temático tipo de sítio que contém informações relacionadas algum serviço ou programa que o órgão ofereça, não necessariamente representando alguma estrutura organizacional} }
+
+\newglossaryentry{front-end}{
+	name={\textit{front-end}},
+	plural={\textit{ftont-ends}},
+	description={em um sistema de informação é a parte que fica evidente para o usuário, como as telas que aparecem e onde ele consegue interagir} }
+
+\newglossaryentry{back-end}{
+	name={\textit{back-end}},
+	plural={\textit{back-ends}},
+	description={em um sistema de informação é a parte que roda por traz da tela, onde é processada toda a lógica de execução do ambiente} }
+
+\newglossaryentry{kernel}{
+	name={\textit{Kernel}},
+	plural={\textit{Kernels}},
+	description={Kernel, do inglês ``núcleo'', em sistemas operacionais é a parte central do sistema, que controla os recursos de \textit{hardware} como processadores, memória, portas de comunicação, teclado ou monitor \cite{cito_empirical_2017}. Ele gerencia os processos e distribui os recursos da máquina para as aplicações que rodam sobre o sistema operacional. É através do \gls{kernel} que um navegador \textit{web} como o Mozilla Firefox\footnote{\url{https://www.mozilla.org/pt-BR/firefox/new/}} poderá realizar uma impressão ou simplesmente usar o monitor para abrir uma tela, ou seja, o \textit{Kernel} abstrai a camada de \textit{hardware} gerenciando recursos e fornecendo serviços \cite{bovet_understanding_2001}.} }
+
+\newglossaryentry{docker}{
+	name={\textit{Docker}},
+	plural={\textit{Dockers}},
+	description={um tipo de software que usa \textit{scripts} de configuração para implementar infraestrutura como código. \textit{Docker} implementa o conceito de \glspl{container}, tornando a criação, o gerenciamento e a manutenção de serviços virtualizados mais prática \cite{cito_empirical_2017}. O sistema deverá estar descrito em uma \glspl{dockerfile} e poderá ser compilado, gerando uma imagem com o serviço ou aplicação empacotada. Essa imagem pode ser usada para executar um \gls{container} em um hospedeiro para oferecer uma aplicação ou serviço} }
+
+\newglossaryentry{docker-compose}{
+	name={\textit{Docker Compose}},
+	plural={\textit{Docker Compose}},
+	see=[veja também]{docker},
+	description={é um \textit{plug-in} para \gls{docker} usado para orquestrar o ambiente de servidores. Em ambientes complexos ele é usado para configurar o funcionamento de diferentes tipos de serviços ou aplicações em uma mesma composição de servidores. O Docker Compose facilita o gerenciamento da configuração do servidor pois automatiza a hierarquia de serviços, a comunicação entre os serviços, gerencia a liberação de portas de comunicação, faz o escalonamento da aplicação e toda a coordenação de dependências de serviços \cite{_overview_2017-1}} }
+
+
+\newglossaryentry{container}{
+	name={\textit{Container}},
+	plural={\textit{Containers}},
+	see=[veja também]{docker},
+	description={é uma tecnologia que empacota algum tipo de aplicação ou serviço na forma de um recipiente, com seus serviços e bibliotecas isolados de maneira eficiente, garantindo que vários tipos de serviços diferentes possam economizar recursos compartilhando bibliotecas básicas do \textit{kernel} do hospedeiro \cite{cito_empirical_2017}}}
+
+\newglossaryentry{dockerfile}{
+	name={\textit{Dockerfile}},
+	plural={\textit{Dockerfiles}},
+	description={é o arquivo onde estão inseridas as informações necessárias para se compilar uma imagem Docker. Ela contém os comandos que instalarão os serviços e pacotes necessários para criar a imagem com a correta configuração de ambiente e pacotes para que o serviço desejado seja capaz de rodar \cite{cito_empirical_2017}} }
+
+\newglossaryentry{linter}{
+	name={\textit{Linter}},
+	plural={\textit{Linters}},
+	description={é um sistema baseado em \gls{docker} que faz uma inspeção nos comandos escritos na \gls{dockerfile} em busca de erros comuns de programação para alertar ao autor quando esses ocorrerem. Ele é um projeto de código aberto e mantido pela comunidade de usuários e desenvolvedores Docker no GitHub \cite{_overview_2017-1}} }
+
+\newglossaryentry{imagem}{
+	name={Imagem Docker},
+	plural={Imagens Dockert},
+	description={é uma forma empacotada de um produto ou serviço, feito de maneira econômica, para que contenha somente o que for essencial e a partir da qual é possível se criar um \gls{container} que rodará um serviço}}
+
+\newglossaryentry{git}{
+	name={\textit{Git}},
+	plural={\textit{Git}},
+	description={é um serviço distribuído de gerenciamento de versões desenvolvido por Linus Linus Torvalds e Junio Hamano utilizado para controlar alterações realizadas no código-fonte} }
+
+\newglossaryentry{github}{
+	name={\textit{GitHub}},
+	see=[veja também]{git},
+	plural={\textit{GitHubs}},
+	description={é um sítio que implementa e oferece o \gls{git} como serviço} }
+
+\newglossaryentry{ldap}{
+	name={LDAP},
+	plural={LDAPs},
+	description={Lightweight Directory Access Protocol (LDAP) é um tipo de protocolo aberto usado como padrão na indústria para gerenciar acesso e autenticação em serviços de informação de sistemas distribuídos em uma rede de internet or meio de protoclos TCP/IP.} }
+
+\newglossaryentry{stack}{
+	name={Stack},
+	plural={Stacks},
+	description={No ambiente de servidores \textit{Stack} é o conjunto de serviços necessários para que uma aplicação seja servida ao meio. Por exemplo, um servidor genérico de serviços da \textit{web} precisa de um servidor HTTP, um banco de dados MySQL e um servidor PHP. Esses serviços em um mesmo ambiente compõem uma \textit{Stack} comummente conhecida domo "AMP", composta por três serviços diferentes que juntos operam uma palicação única.} }
+
+%\newglossaryentry{xxx}{
+%	name={xxx},
+%	plural={xxxs},
+%	description={xxx} }
+% ---
+
+% ---
+% Exemplo de configurações do glossairo
+\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+	\glsseelist{#2}}
+% ---

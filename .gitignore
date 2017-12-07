@@ -22,3 +22,9 @@
 *.out
 *.synctex.gz
 *.brf
+*.bcf
+*.lol
+*.loq
+*.xdy
+*.run.xml
+*blx.bib

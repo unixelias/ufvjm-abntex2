@@ -19,7 +19,7 @@
 % ------------------------------------------------------------------------
 % Revisão para adequação ao MANUAL DE NORMALIZAÇÃO: MONOGRAFIAS, DISSERTAÇÕES
 % E TESES Aprovado pela Resolução Nº 06 - CONSEPE, de 09 de julho de 2015.
-% Esse trabalho considera as normas dispostas no  Manual de Normatização: 
+% Esse trabalho considera as normas dispostas no Manual de Normatização: 
 % Monografias, Dissertações e Teses 2a. ed., distribuído pelo Sistema de
 % Bibliotecas – Sisbi da UFVJM.
 % Link: http://acervo.ufvjm.edu.br/jspui/handle/1/936
@@ -44,11 +44,24 @@
 % Caso não exista Subtítulo, o mesmo não será impresso
 % O mesmo para os convidados na Folha de Aprovação
 % ***************************************************************************
+
 % ---
 % INICIO DAS CUSTOMIZACOES PARA A UFVJM
 % ---
 
-\ProvidesPackage{abntex2novopacote}[2016/11/05 Criação desta customização do abnTeX2]
+\ProvidesPackage{scripts/abntex2-tcc-ufvjm}[2016/11/05 Criação desta customização do abnTeX2]
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo da UFVJM
+% --- 
+
+% ---
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Texto padrão antes do número das páginas
 
 % ---
 % MACROS
@@ -95,7 +108,6 @@
 	\renewcommand{\imprimirConvidadoB}{#2}
 }
 
-
 % Macro \convidadoARotulo adicionada
 \newcommand{\convidadoCRotulo}{Convidado 1: }
 
@@ -117,15 +129,21 @@
 % Fonte normal tam 12
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{ptm}\selectfont}
 \renewcommand\chaptitlefont{\ABNTEXchapterfont\normalsize\bfseries\centering}
+
 % --- 
 % ESPAÇAMENTO ENTRE LINHAS E PARÁGRAFOS
 % --- 
+
+% Ajusta esaçamento e fontes
+\setlength{\beforechapskip}{12pt -\baselineskip}
+\setlength{\afterchapskip}{18pt -\baselineskip}
 
 % Identaçao de 2,0 centímetros no início dos parágrafos
 \setlength{\parindent}{2cm}
 
 % Sem espaços entre os parágrafos
 \setlength{\parskip}{0cm}  % tente também \onelineskip
+\setlength{\footmarkwidth}{8pt} % largura do footnotemark
 
 
 % ---
@@ -133,10 +151,13 @@
 %
 \renewcommand{\imprimircapa}{%
 	\begin{capa}%
+		% Esse comando insere a arte da capa
+		% O anexo pode ser um arquivo PDF que ficará ao fundo da capa
+		%\ThisCenterWallPaper{1}{img/capa_frontal_ufvjm}
 		\center
 		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirinstituicao}
 		\par
-		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirCurso}
+		\ABNTEXchapterfont\bfseries\normalsize{\imprimirCurso}
 		\par
 		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
 		\par
@@ -145,7 +166,7 @@
 		\begin{center}
 			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
 		\end{center}
-				
+		
 		\vfill
 		\imprimirlocal
 		\par
@@ -161,7 +182,7 @@
 \renewcommand{\folhaderostocontent}{
 	\begin{center}
 		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
-			
+		
 		\vspace*{\fill}\vspace*{\fill}
 		
 		\begin{center}
@@ -182,7 +203,7 @@
 				}%
 			\end{SingleSpace}
 		\end{adjustwidth}
-				
+		
 		\vspace*{\fill}\vspace*{\fill}
 		{\imprimirlocal}
 		\par
@@ -196,57 +217,245 @@
 % ---
 
 \makeatletter
-	\newcommand{\imprimirfolhadeaprovacao}{%
-		\begin{folhadeaprovacao}
-			\begin{center}
-				{\ABNTEXchapterfont\bfseries\imprimirautor}
-				\par\vspace*{\baselineskip}
-				\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
-				\par\vspace*{\baselineskip}
-				\vspace*{\fill}
-				\begin{adjustwidth}{7cm}{0cm}
-					\begin{SingleSpace}
-						\abntex@ifnotempty{\imprimirpreambulo}{%
-							\normalfont\imprimirpreambulo
-						}%
-						\par\vspace*{\baselineskip}
-						{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador}
-						\par\vspace*{\baselineskip}
-						Aprovado em: \underline{\hspace{.25in}}{/}\underline{\hspace{.25in}}{/}\underline{\hspace{.5in}}.
-					\end{SingleSpace}
-				\end{adjustwidth}
-				\vspace*{\fill}
-				\par\vspace*{\baselineskip}
-				\begin{SingleSpace}		
-					\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
-					\par\vspace*{\baselineskip}
-					\abntex@ifnotempty{\imprimircoorientador}{%
-						\assinatura{\textbf{\imprimircoorientador} \\ Coorientador}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoA}{%
-						\assinatura{\textbf{\imprimirConvidadoA}}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoB}{%
-						\assinatura{\textbf{\imprimirConvidadoB}}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoC}{%
-						\assinatura{\textbf{\imprimirConvidadoC}}
-						\par\vspace*{\baselineskip}
-					}
-				\end{SingleSpace}
-			\end{center}
+\newcommand{\imprimirfolhadeaprovacao}{%
+	\begin{folhadeaprovacao}
+		\begin{center}
+			{\ABNTEXchapterfont\bfseries\imprimirautor}
+			\par\vspace*{\baselineskip}
+			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
+			\par\vspace*{\baselineskip}
 			\vspace*{\fill}
-			\begin{center}
-				\vspace*{0.5cm}
-				{\imprimirlocal}
-			\end{center}
-			
-		\end{folhadeaprovacao}}
+			\begin{adjustwidth}{7cm}{0cm}
+				\begin{SingleSpace}
+					\abntex@ifnotempty{\imprimirpreambulo}{%
+						\normalfont\imprimirpreambulo
+					}%
+					\par\vspace*{\baselineskip}
+					{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador}
+					\par\vspace*{\baselineskip}
+					Aprovado em: \underline{\hspace{.25in}}{/}\underline{\hspace{.25in}}{/}\underline{\hspace{.5in}}.
+				\end{SingleSpace}
+			\end{adjustwidth}
+			\vspace*{\fill}
+			\par\vspace*{\baselineskip}
+			\begin{SingleSpace}		
+				\assinatura{\textbf{\imprimirorientador} \\ Orientadora} 
+				\par\vspace*{\baselineskip}
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					\assinatura{\textbf{\imprimircoorientador} \\ Coorientador}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoA}{%
+					\assinatura{\textbf{\imprimirConvidadoA}}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoB}{%
+					\assinatura{\textbf{\imprimirConvidadoB}}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoC}{%
+					\assinatura{\textbf{\imprimirConvidadoC}}
+					\par\vspace*{\baselineskip}
+				}
+			\end{SingleSpace}
+		\end{center}
+		\vspace*{\fill}
+		\begin{center}
+			\vspace*{0.5cm}
+			{\imprimirlocal}
+		\end{center}
+		
+\end{folhadeaprovacao}}
 % ---
 \makeatother
+
+% ESTILO DE CAPÍTULO
+% ---
+% Configuracao dos titulos dos capitulos
+% Novo estido do memoir 
+% Norma ABNT NBR 14724-2011 - 5.2.2-5.2.4; ABNT NBR 6024-2003 - 3.1-3.8
+
+\makechapterstyle{ufvjm}{%
+	\renewcommand{\chapterheadstart}{} 
+	
+	\ifx \chapternamenumlength \undefined
+	\newlength{\chapternamenumlength}
+	\fi
+	
+	% tamanhos de fontes de chapter e part	
+	\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+		\setlength{\beforechapskip}{\baselineskip}
+		\setlength{\afterchapskip}{18pt} 
+		\renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\normalsize}
+	}{%else
+		\setlength{\beforechapskip}{0pt}
+		\setlength{\afterchapskip}{18pt} 
+		\renewcommand{\chaptitlefont}{\ABNTEXchapterfont\bfseries\normalsize}
+	}
+	
+	\renewcommand{\chapnumfont}{\chaptitlefont}
+	\renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	\renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	\renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+	
+	% tamanhos de fontes de section, subsection, subsubsection e subsubsubsection
+	\setsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsectionupperifneeded}
+	\setsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsectionupperifneeded}
+	\setsubsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsubsectionupperifneeded}
+	\setsubsubsubsecheadstyle{\ABNTEXchapterfont\normalsize\ABNTEXsubsubsubsectionupperifneeded}
+	
+	% impressao do numero do capitulo
+	\renewcommand{\chapternamenum}{}
+	
+	% impressao do nome do capitulo
+	\renewcommand{\printchaptername}{%
+		\chaptitlefont
+		\ifthenelse{\boolean{abntex@apendiceousecao}}{\appendixname}{}%
+	}
+	
+	% impressao do titulo do capitulo
+	\def\printchaptertitle##1{%
+		\chaptitlefont%
+		\ifthenelse{\boolean{abntex@innonumchapter}}{\centering\ABNTEXchapterupperifneeded{##1}}{%
+			\ifthenelse{\boolean{abntex@apendiceousecao}}{%
+				\centering%
+				\settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+				\ABNTEXchapterupperifneeded{##1}%
+			}{%
+				\settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+				\parbox[t]{\columnwidth-\chapternamenumlength}{\ABNTEXchapterupperifneeded{##1}}}%
+		}    
+	}
+	
+	% impressao do numero do capitulo     	
+	\renewcommand{\printchapternum}{%
+		\tocprintchapter
+		\setboolean{abntex@innonumchapter}{false}
+		\chapnumfont%
+		\space\thechapter\space%
+		\ifthenelse{\boolean{abntex@apendiceousecao}}{%
+			\tocinnonumchapter
+			\ABNTEXcaptiondelim%
+		}{} % else
+	}
+	\renewcommand{\afterchapternum}{}
+	
+	% impressao do capitulo nao numerado
+	\renewcommand\printchapternonum{%
+		\tocprintchapternonum
+		\setboolean{abntex@innonumchapter}{true}%
+	}
+}
+\chapterstyle{ufvjm}
+% ---
+
+
+% Altera os comandos \configurecaptions e \configureseparator para trabalhar com 
+% o pacote caption e amigos. Aqui ele está configurado para as normas da UFVJM,
+% sem espaços entre as notas
+\AtEndPackage{caption}{
+	\AtBeginDocument{%
+		\DeclareCaptionLabelSeparator{barr}{\ABNTEXcaptiondelim}
+		\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
+		\captionsetup{format=hang,
+			labelseparator=barr,
+			%labelfont=ABNTEXfontereduzida,
+			%font=ABNTEXfontereduzida
+		}
+		\renewcommand{\configurecaptions}{%
+			\captionsetup{justification=justified,%
+				singlelinecheck=false,
+				position=above,
+				skip={0pt},
+				width={0pt}}}
+		\renewcommand{\configureseparator}{\captionsetup{labelsep=colon}}
+	}
+}
+
+% Define o comando \fonte que respeita as configurações de caption do memoir ou do caption
+% customizado para mostrar ":" e não "-"
+\makeatletter
+\renewcommand{\fonte}[2][\fontename]{%
+	\M@gettitle{#2}%
+	\memlegendinfo{#2}%
+	\par
+	\begingroup
+	\@parboxrestore
+	\if@minipage
+	\@setminipage
+	\fi
+	\ABNTEXfontereduzida
+	\configureseparator
+	\captiondelim{labelseparator=colon}
+	% Identa os itens das notas e fontes
+	%\captionsetup{format=plain,indention=0pt}
+	\@makecaption{\ABNTEXfontereduzida #1}{\ignorespaces\ABNTEXfontereduzida #2}\par
+	\endgroup}
+\makeatother
+
+% Tratamento de Quadros
+% Baseado nas instruções disponíveis em
+% https://github.com/abntex/abntex2/wiki/HowToCriarNovoAmbienteListing
+% Novo list of (listings) para QUADROS
+
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+% Configuração de posicionamento padrão:
+\setfloatlocations{quadro}{hbtp}
+
+
+% ---
+% Pacotes para lista de códigos
+% ---
+% Novo list of (listings) para códigos
+\usepackage{listings}		% Cria caixas para exibição de códigos
+\lstset{
+	frame=trBL,
+	framerule=0.1pt,
+	numberbychapter=false,
+	captionpos=t,
+	basicstyle=\ttfamily\small, 
+	extendedchars=true, 
+	showspaces=false, 
+	showstringspaces=false, 
+	numbers=left,
+	numberstyle=\tiny,
+	numberblanklines=false,
+	breaklines=true,
+	breakautoindent=true, 
+	backgroundcolor=\color{black!3},
+	extendedchars=\true,
+	inputencoding=utf8,
+	belowcaptionskip=\onelineskip,
+	belowskip=0pt
+}
+
+\renewcommand{\lstlistlistingname}{Lista de códigos}%
+\renewcommand{\lstlistingname}{Código}
+\newfloat[chapter]{listing}{lol}{\listingname}
+\newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+\newlistentry{listing}{lol}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{listing}{chapter}
+% Configuração de posicionamento padrão:
+\setfloatlocations{listing}{!hbtp}
+
+
+
+
+
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UFVJM
