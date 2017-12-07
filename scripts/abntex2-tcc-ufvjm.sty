@@ -19,7 +19,7 @@
 % ------------------------------------------------------------------------
 % Revisão para adequação ao MANUAL DE NORMALIZAÇÃO: MONOGRAFIAS, DISSERTAÇÕES
 % E TESES Aprovado pela Resolução Nº 06 - CONSEPE, de 09 de julho de 2015.
-% Esse trabalho considera as normas dispostas no  Manual de Normatização: 
+% Esse trabalho considera as normas dispostas no Manual de Normatização: 
 % Monografias, Dissertações e Teses 2a. ed., distribuído pelo Sistema de
 % Bibliotecas – Sisbi da UFVJM.
 % Link: http://acervo.ufvjm.edu.br/jspui/handle/1/936
@@ -108,7 +108,6 @@
 	\renewcommand{\imprimirConvidadoB}{#2}
 }
 
-
 % Macro \convidadoARotulo adicionada
 \newcommand{\convidadoCRotulo}{Convidado 1: }
 
@@ -152,6 +151,9 @@
 %
 \renewcommand{\imprimircapa}{%
 	\begin{capa}%
+		% Esse comando insere a arte da capa
+		% O anexo pode ser um arquivo PDF que ficará ao fundo da capa
+		%\ThisCenterWallPaper{1}{img/capa_frontal_ufvjm}
 		\center
 		\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirinstituicao}
 		\par
@@ -164,7 +166,7 @@
 		\begin{center}
 			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
 		\end{center}
-				
+		
 		\vfill
 		\imprimirlocal
 		\par
@@ -180,7 +182,7 @@
 \renewcommand{\folhaderostocontent}{
 	\begin{center}
 		\ABNTEXchapterfont\bfseries\normalsize\imprimirautor
-			
+		
 		\vspace*{\fill}\vspace*{\fill}
 		
 		\begin{center}
@@ -201,7 +203,7 @@
 				}%
 			\end{SingleSpace}
 		\end{adjustwidth}
-				
+		
 		\vspace*{\fill}\vspace*{\fill}
 		{\imprimirlocal}
 		\par
@@ -215,55 +217,55 @@
 % ---
 
 \makeatletter
-	\newcommand{\imprimirfolhadeaprovacao}{%
-		\begin{folhadeaprovacao}
-			\begin{center}
-				{\ABNTEXchapterfont\bfseries\imprimirautor}
-				\par\vspace*{\baselineskip}
-				\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
-				\par\vspace*{\baselineskip}
-				\vspace*{\fill}
-				\begin{adjustwidth}{7cm}{0cm}
-					\begin{SingleSpace}
-						\abntex@ifnotempty{\imprimirpreambulo}{%
-							\normalfont\imprimirpreambulo
-						}%
-						\par\vspace*{\baselineskip}
-						{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador}
-						\par\vspace*{\baselineskip}
-						Aprovado em: \underline{\hspace{.25in}}{/}\underline{\hspace{.25in}}{/}\underline{\hspace{.5in}}.
-					\end{SingleSpace}
-				\end{adjustwidth}
-				\vspace*{\fill}
-				\par\vspace*{\baselineskip}
-				\begin{SingleSpace}		
-					\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
-					\par\vspace*{\baselineskip}
-					\abntex@ifnotempty{\imprimircoorientador}{%
-						\assinatura{\textbf{\imprimircoorientador} \\ Coorientador}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoA}{%
-						\assinatura{\textbf{\imprimirConvidadoA}}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoB}{%
-						\assinatura{\textbf{\imprimirConvidadoB}}
-						\par\vspace*{\baselineskip}
-					}
-					\abntex@ifnotempty{\imprimirConvidadoC}{%
-						\assinatura{\textbf{\imprimirConvidadoC}}
-						\par\vspace*{\baselineskip}
-					}
-				\end{SingleSpace}
-			\end{center}
+\newcommand{\imprimirfolhadeaprovacao}{%
+	\begin{folhadeaprovacao}
+		\begin{center}
+			{\ABNTEXchapterfont\bfseries\imprimirautor}
+			\par\vspace*{\baselineskip}
+			\ABNTEXchapterfont\bfseries\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirSubtitulo}{:~\imprimirSubtitulo}
+			\par\vspace*{\baselineskip}
 			\vspace*{\fill}
-			\begin{center}
-				\vspace*{0.5cm}
-				{\imprimirlocal}
-			\end{center}
-			
-		\end{folhadeaprovacao}}
+			\begin{adjustwidth}{7cm}{0cm}
+				\begin{SingleSpace}
+					\abntex@ifnotempty{\imprimirpreambulo}{%
+						\normalfont\imprimirpreambulo
+					}%
+					\par\vspace*{\baselineskip}
+					{\ABNTEXchapterfont\normalfont\imprimirorientadorRotulo~\imprimirorientador}
+					\par\vspace*{\baselineskip}
+					Aprovado em: \underline{\hspace{.25in}}{/}\underline{\hspace{.25in}}{/}\underline{\hspace{.5in}}.
+				\end{SingleSpace}
+			\end{adjustwidth}
+			\vspace*{\fill}
+			\par\vspace*{\baselineskip}
+			\begin{SingleSpace}		
+				\assinatura{\textbf{\imprimirorientador} \\ Orientadora} 
+				\par\vspace*{\baselineskip}
+				\abntex@ifnotempty{\imprimircoorientador}{%
+					\assinatura{\textbf{\imprimircoorientador} \\ Coorientador}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoA}{%
+					\assinatura{\textbf{\imprimirConvidadoA}}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoB}{%
+					\assinatura{\textbf{\imprimirConvidadoB}}
+					\par\vspace*{\baselineskip}
+				}
+				\abntex@ifnotempty{\imprimirConvidadoC}{%
+					\assinatura{\textbf{\imprimirConvidadoC}}
+					\par\vspace*{\baselineskip}
+				}
+			\end{SingleSpace}
+		\end{center}
+		\vspace*{\fill}
+		\begin{center}
+			\vspace*{0.5cm}
+			{\imprimirlocal}
+		\end{center}
+		
+\end{folhadeaprovacao}}
 % ---
 \makeatother
 
@@ -347,7 +349,7 @@
 \chapterstyle{ufvjm}
 % ---
 
- 
+
 % Altera os comandos \configurecaptions e \configureseparator para trabalhar com 
 % o pacote caption e amigos. Aqui ele está configurado para as normas da UFVJM,
 % sem espaços entre as notas
@@ -390,6 +392,70 @@
 	\@makecaption{\ABNTEXfontereduzida #1}{\ignorespaces\ABNTEXfontereduzida #2}\par
 	\endgroup}
 \makeatother
+
+% Tratamento de Quadros
+% Baseado nas instruções disponíveis em
+% https://github.com/abntex/abntex2/wiki/HowToCriarNovoAmbienteListing
+% Novo list of (listings) para QUADROS
+
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+% Configuração de posicionamento padrão:
+\setfloatlocations{quadro}{hbtp}
+
+
+% ---
+% Pacotes para lista de códigos
+% ---
+% Novo list of (listings) para códigos
+\usepackage{listings}		% Cria caixas para exibição de códigos
+\lstset{
+	frame=trBL,
+	framerule=0.1pt,
+	numberbychapter=false,
+	captionpos=t,
+	basicstyle=\ttfamily\small, 
+	extendedchars=true, 
+	showspaces=false, 
+	showstringspaces=false, 
+	numbers=left,
+	numberstyle=\tiny,
+	numberblanklines=false,
+	breaklines=true,
+	breakautoindent=true, 
+	backgroundcolor=\color{black!3},
+	extendedchars=\true,
+	inputencoding=utf8,
+	belowcaptionskip=\onelineskip,
+	belowskip=0pt
+}
+
+\renewcommand{\lstlistlistingname}{Lista de códigos}%
+\renewcommand{\lstlistingname}{Código}
+\newfloat[chapter]{listing}{lol}{\listingname}
+\newlistof{lstlistoflistings}{lol}{\lstlistlistingname}
+\newlistentry{listing}{lol}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{listing}{chapter}
+% Configuração de posicionamento padrão:
+\setfloatlocations{listing}{!hbtp}
+
+
+
+
+
 
 % ---
 % FIM DAS CUSTOMIZACOES PARA A UFVJM

@@ -64,7 +64,7 @@ citações diretas com mais de três linhas:
 As citações diretas, no texto, com mais de três linhas, devem ser
 destacadas com recuo de 4 cm da margem esquerda, com letra menor que a do texto
 utilizado e sem as aspas. No caso de documentos datilografados, deve-se
-observar apenas o recuo \cite[5.3]{NBR10520:2002}.
+observar apenas o recuo \cite{NBR10520:2002}.
 \end{citacao}
 
 Use o ambiente assim:
@@ -72,7 +72,7 @@ Use o ambiente assim:
 \begin{verbatim}
 \begin{citacao}
 As citações diretas, no texto, com mais de três linhas [...] deve-se
-observar apenas o recuo \cite[5.3]{NBR10520:2002}.
+observar apenas o recuo \cite{NBR10520:2002}.
 \end{citacao}
 \end{verbatim}
 
@@ -107,7 +107,7 @@ separadas do texto por um espaço simples de entre as linhas e por filete de 5
 cm, a partir da margem esquerda. Devem ser alinhadas, a partir da segunda linha
 da mesma nota, abaixo da primeira letra da primeira palavra, de forma a destacar
 o expoente, sem espaço entre elas e com fonte menor
-\textcite[5.2.1]{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
+\textcite{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
 criadas sequencialmente, o \abnTeX\ instrui o \LaTeX\ para que uma vírgula seja
 colocada após cada número do expoente que indica a nota de rodapé no corpo do
 texto.}\footnote{Verifique se os números do expoente possuem uma vírgula para
@@ -169,6 +169,303 @@ acadêmicos.
   }
 \end{table}
 
+\section{Uso de Tabelas com multi colunas}
+
+\begin{table}[htb]
+	\IBGEtab{%
+		\caption{Desempenho da \textit{Stack} sem o uso do \textit{Varnish} cache}%
+		\label{tab:teste-sem-varnish}
+	}{%
+		\begin{tabular}{lcccccc}
+			\toprule
+			\multicolumn{1}{c}{\multirow{3}{*}{Tipo de Conteúdo}} & \multicolumn{6}{c}{Conexões concorrentes}                         \\ \cline{2-7}
+			\multicolumn{1}{c}{}                                  & \multicolumn{2}{c}{1} & \multicolumn{2}{c}{10} & 100     &       \\ \cline{2-7}
+			\multicolumn{1}{c}{}                                  & Req/Seg    & Tempo     & Req/Seg     & Tempo     & Req/Seg & Tempo \\ \hline
+			Página inicial                                          & 250,14     & 3,998     & 663,09      & 1,508     & 625,4   & 1,599 \\
+			Notícia com foto - 40,44 KB                             & 169,89     & 5,079     & 494,43      & 2,023     & 466,33  & 2,144 \\
+			Página comum - 37,74 KB                                 & 195,96     & 5,103     & 503,99      & 1,984     & 463,09  & 2,159 \\
+			Imagem - 108 KB                                         & 8,72       & 114,676   & 26,75       & 37,377    & 624,56  & 1,601 \\
+			Arquivo de CSS - 1,42 KB                                & 296,49     & 3,373     & 798,21      & 1,253     & 757,9   & 1,319 \\ \bottomrule
+		\end{tabular}
+	}{%
+		\fonte{Autor}%
+	}
+\end{table}
+
+A \autoref{tab:teste-com-varnish} apresenta os resultados dos testes na composição com o \textit{Varnish}.
+
+
+Tabelas exibem dados numéricos que podem ser facilmente comparados.
+
+\begin{table}[htb]
+	\IBGEtab{%
+		\caption{Desempenho da \textit{Stack} com o uso do \textit{Varnish} cache}%
+		\label{tab:teste-com-varnish}
+	}{%
+		\begin{tabular}{lcccccc}
+			\toprule
+			\multicolumn{1}{c}{\multirow{3}{*}{Tipo de Conteúdo}} & \multicolumn{6}{c}{Conexões concorrentes}                         \\ \cline{2-7}
+			\multicolumn{1}{c}{}                                  & \multicolumn{2}{c}{1} & \multicolumn{2}{c}{10} & 100     &       \\ \cline{2-7}
+			\multicolumn{1}{c}{}                                  & Req/Seg    & Tempo     & Req/Seg     & Tempo     & Req/Seg & Tempo \\ \hline
+			Página inicial              & 20611,76 & 0,049 & 58664,79 & 0,017 & 53504,26 & 0,019 \\
+			Notícia com foto - 40,44 KB & 18289,06 & 0,055 & 49504,22 & 0,02  & 55116,46 & 0,018 \\
+			Página comum - 37,74 KB     & 18542,42 & 0,054 & 47876,21 & 0,021 & 55802,01 & 0,018 \\
+			Imagem - 108 KB             & 17445,28 & 0,057 & 52603,62 & 0,019 & 52833,74 & 0,019 \\
+			Arquivo de CSS - 1,42 KB    & 17107,97 & 0,058 & 58702,67 & 0,017 & 51502,59 & 0,019 \\ \bottomrule
+		\end{tabular}
+	}{%
+		\fonte{Autor}%
+	}
+\end{table}
+
+% ---
+\section{Quadros}
+% ---
+
+\subsection{Quadro simples}
+
+Uso de quadros, que se diferenciam das tabelas por conter mais informações do tipo descritivas e não uma compilação de números e informações, como seria se fosse uma tabela.
+
+
+\begin{quadro}
+	\caption{\label{q:artefatos-imp}Artefato produzido na fase de implementação}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|p{3.0cm}|c|p{12.0cm}|c|}
+			\hline
+			Nome & Sigla & Descrição & Tarefa \\ \hline
+			Relatório Final & RelFn & Refinamento do Relatório de Demandas (RelDm), sendo incluídas as alterações realizadas durante a fase de desenvolvimento {[}caso houver{]} e inserção de conteúdo do sítio. Ele deverá conter toda a estrutura final do sítio, incluindo a forma de distribuição de arquivos e padronização de nomes e metadados para classificação das informações. & I-7 \\ \hline
+		\end{tabular}%
+	}
+	\legend{Fonte: Autor}
+\end{quadro}
+
+\subsection{Quadro redimensionado quando é muito grande.}\label{ap:benchmark_cms}
+% ---
+\begin{quadro}[htb]
+	\caption{\label{q:sgc_universidades}Quadro sobre pesquisa sobre uso de SGCs e adoção da IDG pelas Universidades Públicas Federais}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|c|c|}
+			\hline
+			Nome da Instituição                                                            & \multicolumn{1}{c|}{URL}          & SGC       & Usa a IDG? \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DA GRANDE DOURADOS (UFGD)                        & http://portal.ufgd.edu.br         & Outros    & Não           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DE CIÊNCIAS DA SAÚDE DE PORTO ALEGRE (UFCSPA)    & http://www.ufcspa.edu.br          & Joomla    & Não           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DE RONDÔNIA (UNIR)                               & http://www.unir.br                & Outros    & Não           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DO ABC (UFABC)                                   & http://www.ufabc.edu.br           & Joomla    & Sim           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DO PAMPA - UNIPAMPA (UNIPAMPA)                   & http://novoportal.unipampa.edu.br & Drupal    & Não           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DO TOCANTINS (UFT)                               & http://ww2.uft.edu.br             & Joomla    & Sim           \\ \hline
+			FUNDAÇÃO UNIVERSIDADE FEDERAL DO VALE DO SÃO FRANCISCO (UNIVASF)               & http://portais.univasf.edu.br     & Plone     & Sim           \\ \hline
+			UNIVERSIDADE DA INTEGRAÇÃO INTERNACIONAL DA LUSOFONIA AFRO-BRASILEIRA (UNILAB) & http://www.unilab.edu.br          & Wordpress & Não           \\ \hline
+			UNIVERSIDADE DE BRASÍLIA (UNB)                                                 & http://www.unb.br                 & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DA BAHIA (UFBA)                                           & http://www.ufba.br                & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DA FRONTEIRA SUL (UFFS)                                   & http://www.uffs.edu.br            & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DA INTEGRAÇÃO LATINO-AMERICANA (UNILA)                    & http://www.unila.edu.br           & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DA PARAÍBA (UFPB)                                         & http://www.ufpb.br                & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE ALAGOAS (UFAL)                                         & http://www.ufal.edu.br            & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE ALFENAS (UNIFAL-MG)                                    & http://www.unifal-mg.edu.br       & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE CAMPINA GRANDE (UFCG)                                  & http://www.ufcg.edu.br            & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE GOIÁS (UFG)                                            & http://www.ufg.br                 & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE ITAJUBÁ - UNIFEI (UNIFEI)                              & https://www.unifei.edu.br/        & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE JUIZ DE FORA (UFJF)                                    & http://www.ufjf.br                & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE LAVRAS (UFLA)                                          & http://www.ufla.br                & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE MATO GROSSO (UFMT)                                     & http://www.ufmt.br                & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE MATO GROSSO DO SUL (UFMS)                              & http://www.ufms.br                & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE MINAS GERAIS (UFMG)                                    & http://www.ufmg.br                & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE OURO PRETO (UFOP)                                      & http://www.ufop.br                & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE PELOTAS (UFPEL)                                        & http://portal.ufpel.edu.br        & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE PERNAMBUCO (UFPE)                                      & http://www.ufpe.br                & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE RORAIMA (UFRR)                                         & http://ufrr.br                    & Joomla    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DE SANTA CATARINA (UFSC)                                  & http://ufsc.br                    & Wordpress & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DE SANTA MARIA (UFSM)                                     & http://site.ufsm.br               & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE SÃO CARLOS (UFSCAR)                                    & http://www2.ufscar.br             & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE SÃO JOÃO DEL REI (UFSJ)                                & http://www.ufsj.edu.br            & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE SÃO PAULO (UNIFESP)                                    & http://www.unifesp.br             & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE SERGIPE (UFS)                                          & http://www.ufs.br                 & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DE UBERLÂNDIA (UFU)                                       & http://www.ufu.br                 & Drupal    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DE VIÇOSA (UFV)                                           & http://www.ufv.br                 & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO ACRE (UFAC)                                            & http://www.ufac.br                & Plone     & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DO AMAPÁ (UNIFAP)                                         & http://www.unifap.br              & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO AMAZONAS (UFAM)                                        & http://ufam.edu.br                & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO CARIRI (UFCA)                                          & http://www.ufca.edu.br            & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO CEARÁ (UFC)                                            & http://www.ufc.br                 & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO ESPÍRITO SANTO (UFES)                                  & http://www.ufes.br                & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO ESTADO DO RIO DE JANEIRO (UNIRIO)                      & http://www.unirio.br              & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO MARANHÃO (UFMA)                                        & http://portais.ufma.br            & Outros    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DO OESTE DA BAHIA (UFOB)                                  & http://ufob.edu.br                & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO OESTE DO PARÁ (UFOPA)                                  & http://www.ufopa.edu.br           & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO PARÁ (UFPA)                                            & http://portal.ufpa.br             & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO PARANÁ (UFPR)                                          & http://www.ufpr.br                & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO PIAUÍ (UFPI)                                           & http://www.ufpi.br                & Joomla    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DO RECÔNCAVO DA BAHIA (UFRB)                              & http://ufrb.edu.br                & Joomla    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DO RIO DE JANEIRO (UFRJ)                                  & http://ufrj.br/                   & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO RIO GRANDE (FURG)                                      & http://www.furg.br                & Outros    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE (UFRN)                             & http://www.ufrn.br                & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL (UFRGS)                              & http://www.ufrgs.br               & Plone     & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO SUL DA BAHIA (UFESBA)                                  & http://www.ufsb.edu.br            & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DO SUL E SUDESTE DO PARÁ (UNIFESSPA)                      & http://www.unifesspa.edu.br       & Joomla    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL DO TRIÂNGULO MINEIRO (UFTM)                               & http://www.uftm.edu.br            & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL DOS VALES DO JEQUITINHONHA E MUCURI (UFVJM)               & http://www.ufvjm.edu.br           & Joomla    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL FLUMINENSE (UFF)                                          & http://www.uff.br                 & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL RURAL DA AMAZÔNIA (UFRA)                                  & http://novo.ufra.edu.br           & Joomla    & Sim           \\ \hline
+			UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO (UFRPE)                               & http://www.ufrpe.br               & Drupal    & Não           \\ \hline
+			UNIVERSIDADE FEDERAL RURAL DO RIO DE JANEIRO (UFRRJ)                           & http://portal.ufrrj.br            & Wordpress & Não           \\ \hline
+			UNIVERSIDADE FEDERAL RURAL DO SEMI-ÁRIDO (UFERSA)                              & http://ufersa.edu.br              & Wordpress & Não           \\ \hline
+			UNIVERSIDADE TECNOLÓGICA FEDERAL DO PARANÁ (UTFPR)                             & http://www.utfpr.edu.br           & Plone     & Não           \\ \hline
+		\end{tabular}
+	}
+	\legend{Fonte: Autor}
+	\legend{Nota: pesquisa realizada em 16/03/2017 verificando os sites das próprias universidades.}
+\end{quadro}
+
+\clearpage 
+% ---
+\section{Códigos fonte}
+% ---
+
+\subsection{Código fonte do projeto Plone.IDG}\label{ap:cod-ploneidg}
+
+Exemplo de representação de códigos no seu trabalho.
+
+\begin{lstlisting}[caption={\textit{Dockerfile} modificada com alterações realizadas para implementar o \textit{Plone} na UFVJM},label={cod:plonedocker-mod}]
+FROM plone:4.3
+
+MAINTAINER Elias Alves <elias.alves@ufvjm.edu.br>
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL Name="Plone v4.3 IDG" \
+Version="1.1.5.3" \
+Architecture="x86_64" \
+Dockerfile_location="/root/buildinfo" \
+org.label-schema.build-date=$BUILD_DATE \
+org.label-schema.name="Plone v4.3 IDG" \
+org.label-schema.description="Modelo Plone v4.3 IDG escrito para implementacao no Portal da UFVJM" \
+org.label-schema.url="http://portal.ufvjm.edu.br/" \
+org.label-schema.vcs-ref=$VCS_REF \
+org.label-schema.vcs-url="https://github.com/unixelias/plone.idg" \
+org.label-schema.vendor="Elias Alves at UFVJM" \
+org.label-schema.version="1.1.5" \
+org.label-schema.version="1.1.5.3" \
+org.label-schema.version="stable" \
+org.label-schema.version="latest" \
+org.label-schema.schema-version="1.0" \
+org.label-schema.docker.cmd="docker run -p 8080:8080 -v ./data:/data unixelias/plone.idg"
+
+USER plone
+COPY site.cfg /plone/instance/
+
+USER root
+COPY Dockerfile /root/buildinfo
+
+[...]
+
+CMD ["start"]
+\end{lstlisting}
+\legend{Fonte: Autor}
+
+
+\begin{lstlisting}[caption={\textit{site.cfg} modificado para instalar pacotes adicionais ao \textit{Plone} com IDG},label={cod:site-cfg-mod}]
+[buildout]
+extends =
+buildout.cfg
+https://raw.githubusercontent.com/unixelias/plone.idg/master/versions/1.1.5.3/versions.cfg
+https://raw.githubusercontent.com/plonegovbr/portal.buildout/master/buildout.d/maintenance.cfg
+
+[instance]
+eggs +=
+# Extensões mantidas pela comunidade PloneGov-BR
+brasil.gov.portal
+brasil.gov.facetada
+brasil.gov.vlibrasnews
+collective.opendata
+# Extensões mantidas pelo Plone
+plone.app.ldap
+collective.lineage
+collective.geo.bundle
+collective.behavior.banner
+collective.polls
+Products.EasyNewsletter
+
+[versions]
+brasil.gov.portal = 1.1.5.1
+\end{lstlisting}
+\legend{Fonte: Autor}
+
+\clearpage
+
+\begin{lstlisting}[caption={\textit{versions.cfg} criado para pinar as versões dos pacotes adicionais a serem instalados no \textit{Plone} com a IDG},label={cod:versions-mod}]
+[buildout]
+
+versions = versions
+
+[versions]
+brasil.gov.facetada = 1.0b1
+brasil.gov.vlibrasnews = 1.0b1
+collective.opendata = 1.0a2
+\end{lstlisting}
+\legend{Fonte: Autor}
+
+
+\begin{lstlisting}[caption={\textit{docker-compose.yml} modificado para adaptar a pilha de serviços \textit{Plone} para o ambiente de produção do Portal da UFVJM},label={cod:docker-compose-mod}]
+version: "2"
+services:
+varnish:
+hostname: 'varnish'
+image: eeacms/varnish
+restart: 'always'
+depends_on:
+- haproxy
+ports:
+- 8080:6081/tcp
+environment:
+- BACKENDS=haproxy
+- BACKENDS_PORT=5000
+- BACKENDS_PROBE_INTERVAL=3s
+- BACKENDS_PROBE_THRESHOLD=2
+- BACKENDS_PROBE_TIMEOUT=1s
+- BACKENDS_PROBE_WINDOW=3
+- DNS_ENABLED=true
+
+haproxy:
+image: eeacms/haproxy
+restart: 'always'
+depends_on:
+- ploneidg
+ports:
+- 1936:1936
+environment:
+- BACKENDS=ploneidg
+- BACKENDS_PORT=8080
+- SERVICE_NAMES=ploneidg
+- DNS_ENABLED=true
+- STATS_AUTH=admin:admin
+
+zeoserver:
+hostname: 'zeoserver'
+image: unixelias/plone.idg:latest
+command:
+- zeoserver
+volumes:
+- data:/data/filestorage
+- data:/data/blobstorage
+- data:/data/backups
+- data:/data/blobstoragebackups
+
+ploneidg:
+image: unixelias/plone.idg:latest
+depends_on:
+- zeoserver
+environment:
+- ZEO_ADDRESS=zeoserver:8100
+
+volumes:
+data:
+driver: local-persist
+driver_opts:
+mountpoint: /srv/portal/data
+command: chown -R 500:500 /data
+\end{lstlisting}
+\legend{Fonte: Autor}
 
 % ---
 \section{Figuras}
@@ -237,7 +534,7 @@ Photoshop\index{Adobe Photoshop}.
 	\begin{center}
 	    \includegraphics[scale=0.5]{img/abntex2-modelo-img-grafico.pdf}
 	\end{center}
-	\legend{Fonte: \textcite[p. 24]{araujo2012}}
+	\legend{Fonte: \textcite{araujo2012}}
 \end{figure}
 
 % ---
@@ -262,11 +559,11 @@ com tamanhos e posições controladas. Veja o exemplo da
     \centering
     \caption{Grafico 2 da minipage} \label{fig_minipage_grafico2}
     \includegraphics[scale=0.2]{img/abntex2-modelo-img-grafico.pdf}
-    \legend{Fonte: \textcite[p. 24]{araujo2012}}
+    \legend{Fonte: \textcite{araujo2012}}
   \end{minipage}
 \end{figure}
 
-Observe que, segundo a \textcite[seções 4.2.1.10 e 5.8]{NBR14724:2011}, as
+Observe que, segundo a \textcite{NBR14724:2011}, as
 ilustrações devem sempre ter numeração contínua e única em todo o documento:
 
 \begin{citacao}
@@ -279,7 +576,7 @@ parte inferior, indicar a fonte consultada (elemento obrigatório, mesmo que
 seja produção do próprio autor), legenda, notas e outras informações
 necessárias à sua compreensão (se houver). A ilustração deve ser citada no
 texto e inserida o mais próximo possível do trecho a que se
-refere. \cite[seções 5.8]{NBR14724:2011}
+refere. \cite{NBR14724:2011}
 \end{citacao}
 
 % ---
@@ -313,7 +610,7 @@ Consulte mais informações sobre expressões matemáticas em
 
 \index{alíneas}\index{subalíneas}\index{incisos}Quando for necessário enumerar
 os diversos assuntos de uma seção que não possua título, esta deve ser
-subdividida em alíneas \cite[4.2]{NBR6024:2012}:
+subdividida em alíneas \cite{NBR6024:2012}:
 
 \begin{alineas}
 
@@ -336,7 +633,7 @@ subdividida em alíneas \cite[4.2]{NBR6024:2012}:
   \item a segunda e as seguintes linhas do texto da alínea começa sob a
   primeira letra do texto da própria alínea;
   
-  \item subalíneas \cite[4.3]{NBR6024:2012} devem ser conforme as alíneas a
+  \item subalíneas \cite{NBR6024:2012} devem ser conforme as alíneas a
   seguir:
 
   \begin{alineas}
@@ -419,7 +716,7 @@ Para isso, também estão disponíveis os ambientes:
   \begin{DoubleSpace*} ... \end{DoubleSpace*} 
 \end{verbatim}
 
-Para mais informações, consulte \textcite[p. 47-52 e 135]{memoir}.
+Para mais informações, consulte \textcite{memoir}.
 
 % ---
 \section{Inclusão de outros arquivos}\label{sec-include}
@@ -559,8 +856,8 @@ alinhado à esquerda e a segunda e demais linhas devem iniciar logo abaixo da
 primeira palavra da primeira linha}
 % ---
 
-Isso atende à norma \textcite[seções de 5.2.2 a 5.2.4]{NBR14724:2011} 
- e \textcite[seções de 3.1 a 3.8]{NBR6024:2012}.
+Isso atende à norma \textcite{NBR14724:2011} 
+ e \textcite{NBR6024:2012}.
 
 % ---
 \section{Diferentes idiomas e hifenizações}
@@ -604,7 +901,7 @@ citações em português e em francês, você deveria usar o preâmbulo como aba
 \end{verbatim}
 
 A lista completa de idiomas suportados, bem como outras opções de hifenização,
-estão disponíveis em \textcite[p.~5-6]{babel}.
+estão disponíveis em \textcite{babel}.
 
 Exemplo de hifenização em inglês\footnote{Extraído de:
 \url{http://en.wikibooks.org/wiki/LaTeX/Internationalization}}:
@@ -664,7 +961,7 @@ referência completa das macros e ambientes disponíveis.
 
 Além disso, o manual possui informações adicionais sobre as normas ABNT
 observadas pelo \abnTeX\ e considerações sobre eventuais requisitos específicos
-não atendidos, como o caso da \textcite[seção 5.2.2]{NBR14724:2011}, que
+não atendidos, como o caso da \textcite{NBR14724:2011}, que
 especifica o espaçamento entre os capítulos e o início do texto, regra
 propositalmente não atendida pelo presente modelo.
 
